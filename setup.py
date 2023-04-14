@@ -14,7 +14,7 @@ setuptools.setup(
     description="A Lightweight Face Recognition and Facial Attribute Analysis Framework (Age, Gender, Emotion, Race) for Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/serengil/deepface",
+    url="https://github.com/leerix/deepface-macos",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
