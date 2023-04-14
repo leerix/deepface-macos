@@ -7,7 +7,7 @@ with open("requirements.txt", "r", encoding="utf-8") as f:
     requirements = f.read().split("\n")
 
 setuptools.setup(
-    name="deepface",
+    name="deepface-macos",
     version="0.0.79",
     author="Sefik Ilkin Serengil",
     author_email="serengil@gmail.com",
