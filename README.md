@@ -1,4 +1,6 @@
-# deepface
+# deepface for macos
+
+**Note:** this is the same as the standard [deepface](https://github.com/serengil/deepface) except the tensorflow dependency is tensorflow-macos and the RetinaFace dependency is [RetinaFace for macos](https://github.com/leerix/retinaface-macos)
 
 <div align="center">
 
@@ -108,31 +110,31 @@ Deepface is a **hybrid** face recognition package. It currently wraps many **sta
 
 ```python
 models = [
-  "VGG-Face", 
-  "Facenet", 
-  "Facenet512", 
-  "OpenFace", 
-  "DeepFace", 
-  "DeepID", 
-  "ArcFace", 
-  "Dlib", 
+  "VGG-Face",
+  "Facenet",
+  "Facenet512",
+  "OpenFace",
+  "DeepFace",
+  "DeepID",
+  "ArcFace",
+  "Dlib",
   "SFace",
 ]
 
 #face verification
-result = DeepFace.verify(img1_path = "img1.jpg", 
-      img2_path = "img2.jpg", 
+result = DeepFace.verify(img1_path = "img1.jpg",
+      img2_path = "img2.jpg",
       model_name = models[0]
 )
 
 #face recognition
 dfs = DeepFace.find(img_path = "img1.jpg",
-      db_path = "C:/workspace/my_db", 
+      db_path = "C:/workspace/my_db",
       model_name = models[1]
 )
 
 #embeddings
-embedding_objs = DeepFace.represent(img_path = "img.jpg", 
+embedding_objs = DeepFace.represent(img_path = "img.jpg",
       model_name = models[2]
 )
 ```
@@ -163,14 +165,14 @@ Similarity could be calculated by different metrics such as [Cosine Similarity](
 metrics = ["cosine", "euclidean", "euclidean_l2"]
 
 #face verification
-result = DeepFace.verify(img1_path = "img1.jpg", 
-          img2_path = "img2.jpg", 
+result = DeepFace.verify(img1_path = "img1.jpg",
+          img2_path = "img2.jpg",
           distance_metric = metrics[1]
 )
 
 #face recognition
-dfs = DeepFace.find(img_path = "img1.jpg", 
-          db_path = "C:/workspace/my_db", 
+dfs = DeepFace.find(img_path = "img1.jpg",
+          db_path = "C:/workspace/my_db",
           distance_metric = metrics[2]
 )
 ```
@@ -182,7 +184,7 @@ Euclidean L2 form [seems](https://youtu.be/i_MOwvhbLdI) to be more stable than c
 Deepface also comes with a strong facial attribute analysis module including [`age`](https://sefiks.com/2019/02/13/apparent-age-and-gender-prediction-in-keras/), [`gender`](https://sefiks.com/2019/02/13/apparent-age-and-gender-prediction-in-keras/), [`facial expression`](https://sefiks.com/2018/01/01/facial-expression-recognition-with-keras/) (including angry, fear, neutral, sad, disgust, happy and surprise) and [`race`](https://sefiks.com/2019/11/11/race-and-ethnicity-prediction-in-keras/) (including asian, white, middle eastern, indian, latino and black) predictions. Result is going to be the size of faces appearing in the source image.
 
 ```python
-objs = DeepFace.analyze(img_path = "img4.jpg", 
+objs = DeepFace.analyze(img_path = "img4.jpg",
         actions = ['age', 'gender', 'race', 'emotion']
 )
 ```
@@ -202,39 +204,39 @@ All deepface functions accept an optional detector backend input argument. You c
 
 ```python
 backends = [
-  'opencv', 
-  'ssd', 
-  'dlib', 
-  'mtcnn', 
-  'retinaface', 
+  'opencv',
+  'ssd',
+  'dlib',
+  'mtcnn',
+  'retinaface',
   'mediapipe'
 ]
 
 #face verification
-obj = DeepFace.verify(img1_path = "img1.jpg", 
-        img2_path = "img2.jpg", 
+obj = DeepFace.verify(img1_path = "img1.jpg",
+        img2_path = "img2.jpg",
         detector_backend = backends[0]
 )
 
 #face recognition
-dfs = DeepFace.find(img_path = "img.jpg", 
-        db_path = "my_db", 
+dfs = DeepFace.find(img_path = "img.jpg",
+        db_path = "my_db",
         detector_backend = backends[1]
 )
 
 #embeddings
-embedding_objs = DeepFace.represent(img_path = "img.jpg", 
+embedding_objs = DeepFace.represent(img_path = "img.jpg",
         detector_backend = backends[2]
 )
 
 #facial analysis
-demographies = DeepFace.analyze(img_path = "img4.jpg", 
+demographies = DeepFace.analyze(img_path = "img4.jpg",
         detector_backend = backends[3]
 )
 
 #face detection and alignment
-face_objs = DeepFace.extract_faces(img_path = "img.jpg", 
-        target_size = (224, 224), 
+face_objs = DeepFace.extract_faces(img_path = "img.jpg",
+        target_size = (224, 224),
         detector_backend = backends[4]
 )
 ```
