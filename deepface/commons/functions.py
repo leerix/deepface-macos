@@ -36,13 +36,15 @@ def initialize_folder():
         OSError: if the folder cannot be created.
     """
     home = get_deepface_home()
+    deepFaceHomePath = home + "/.deepface"
+    weightsPath = deepFaceHomePath + "/weights"
 
-    if not os.path.exists(home + "/.deepface"):
-        os.makedirs(home + "/.deepface")
+    if not os.path.exists(deepFaceHomePath):
+        os.makedirs(deepFaceHomePath, exist_ok=True)
         print("Directory ", home, "/.deepface created")
 
-    if not os.path.exists(home + "/.deepface/weights"):
-        os.makedirs(home + "/.deepface/weights")
+    if not os.path.exists(weightsPath):
+        os.makedirs(weightsPath, exist_ok=True)
         print("Directory ", home, "/.deepface/weights created")
 
 
@@ -103,8 +105,15 @@ def load_image(img):
     if os.path.isfile(img) is not True:
         raise ValueError(f"Confirm that {img} exists")
 
-    return cv2.imread(img)
+    # For reading images with unicode names
+    with open(img, "rb") as img_f:
+        chunk = img_f.read()
+        chunk_arr = np.frombuffer(chunk, dtype=np.uint8)
+        img = cv2.imdecode(chunk_arr, cv2.IMREAD_COLOR)
+    return img
 
+    # This causes troubles when reading files with non english names
+    # return cv2.imread(img)
 
 # --------------------------------------------------
 
@@ -302,7 +311,7 @@ def find_target_size(model_name):
         "Facenet512": (160, 160),
         "OpenFace": (96, 96),
         "DeepFace": (152, 152),
-        "DeepID": (55, 47),
+        "DeepID": (47, 55),
         "Dlib": (150, 150),
         "ArcFace": (112, 112),
         "SFace": (112, 112),
