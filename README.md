@@ -13,11 +13,10 @@
 
 [![DOI](http://img.shields.io/:DOI-10.1109/ASYU50717.2020.9259802-blue.svg?style=flat)](https://doi.org/10.1109/ASYU50717.2020.9259802)
 [![DOI](http://img.shields.io/:DOI-10.1109/ICEET53442.2021.9659697-blue.svg?style=flat)](https://doi.org/10.1109/ICEET53442.2021.9659697)
-[![DOI](http://img.shields.io/:DOI-10.33774/coe--2023--18rcn-blue.svg?style=flat)](https://doi.org/10.33774/coe-2023-18rcn)
 
 [![Blog](https://img.shields.io/:blog-sefiks.com-blue.svg?style=flat&logo=wordpress)](https://sefiks.com)
 [![YouTube](https://img.shields.io/:youtube-@sefiks-red.svg?style=flat&logo=youtube)](https://www.youtube.com/@sefiks?sub_confirmation=1)
-[![Twitter](https://img.shields.io/:follow-@serengil-blue.svg?style=flat&logo=twitter)](https://twitter.com/serengil)
+[![Twitter](https://img.shields.io/:follow-@serengil-blue.svg?style=flat&logo=twitter)](https://twitter.com/intent/user?screen_name=serengil)
 
 </div>
 
@@ -196,9 +195,9 @@ Age model got ± 4.65 MAE; gender model got 97.44% accuracy, 96.29% precision an
 
 **Face Detectors** - [`Demo`](https://youtu.be/GZ2p2hj2H5k)
 
-Face detection and alignment are important early stages of a modern face recognition pipeline. Experiments show that just alignment increases the face recognition accuracy almost 1%. [`OpenCV`](https://sefiks.com/2020/02/23/face-alignment-for-face-recognition-in-python-within-opencv/), [`SSD`](https://sefiks.com/2020/08/25/deep-face-detection-with-opencv-in-python/), [`Dlib`](https://sefiks.com/2020/07/11/face-recognition-with-dlib-in-python/),  [`MTCNN`](https://sefiks.com/2020/09/09/deep-face-detection-with-mtcnn-in-python/), [`RetinaFace`](https://sefiks.com/2021/04/27/deep-face-detection-with-retinaface-in-python/) and [`MediaPipe`](https://sefiks.com/2022/01/14/deep-face-detection-with-mediapipe/) detectors are wrapped in deepface.
+Face detection and alignment are important early stages of a modern face recognition pipeline. Experiments show that just alignment increases the face recognition accuracy almost 1%. [`OpenCV`](https://sefiks.com/2020/02/23/face-alignment-for-face-recognition-in-python-within-opencv/), [`SSD`](https://sefiks.com/2020/08/25/deep-face-detection-with-opencv-in-python/), [`Dlib`](https://sefiks.com/2020/07/11/face-recognition-with-dlib-in-python/),  [`MTCNN`](https://sefiks.com/2020/09/09/deep-face-detection-with-mtcnn-in-python/), [`Faster MTCNN`](https://github.com/timesler/facenet-pytorch), [`RetinaFace`](https://sefiks.com/2021/04/27/deep-face-detection-with-retinaface-in-python/), [`MediaPipe`](https://sefiks.com/2022/01/14/deep-face-detection-with-mediapipe/), [`YOLOv8 Face`](https://github.com/derronqi/yolov8-face) and [`YuNet`](https://github.com/ShiqiYu/libfacedetection) detectors are wrapped in deepface.
 
-<p align="center"><img src="https://raw.githubusercontent.com/serengil/deepface/master/icon/detector-portfolio-v3.jpg" width="95%" height="95%"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/serengil/deepface/master/icon/detector-portfolio-v5.jpg" width="95%" height="95%"></p>
 
 All deepface functions accept an optional detector backend input argument. You can switch among those detectors with this argument. OpenCV is the default detector.
 
@@ -210,6 +209,15 @@ backends = [
   'mtcnn',
   'retinaface',
   'mediapipe'
+  'opencv',
+  'ssd',
+  'dlib',
+  'mtcnn',
+  'retinaface',
+  'mediapipe',
+  'yolov8',
+  'yunet',
+  'fastmtcnn',
 ]
 
 #face verification
@@ -315,18 +323,6 @@ $ deepface analyze -img_path tests/dataset/img1.jpg
 
 You can also run these commands if you are running deepface with docker. Please follow the instructions in the [shell script](https://github.com/serengil/deepface/blob/master/scripts/dockerize.sh#L17).
 
-## Derived applications
-
-You can use deepface not just for facial recognition tasks. It's very common to use DeepFace for entertainment purposes. For instance, celebrity look-alike prediction and parental look-alike prediction tasks can be done with DeepFace!
-
-**Parental Look-Alike Prediction** - [`Vlog`](https://youtu.be/nza4tmi9vhE), [`Tutorial`](https://sefiks.com/2022/12/22/decide-whom-your-child-looks-like-with-facial-recognition-mommy-or-daddy/)
-
-<p align="center"><img src="https://raw.githubusercontent.com/serengil/deepface/master/icon/parental-look-alike-v2.jpg" width="90%" height="90%"></p>
-
-**Celebrity Look-Alike Prediction** - [`Vlog`](https://youtu.be/jaxkEn-Kieo), [`Tutorial`](https://sefiks.com/2019/05/05/celebrity-look-alike-face-recognition-with-deep-learning-in-keras/)
-
-<p align="center"><img src="https://raw.githubusercontent.com/serengil/deepface/master/icon/look-alike-v3.jpg" width="90%" height="90%"></p>
-
 ## Contribution [![Tests](https://github.com/serengil/deepface/actions/workflows/tests.yml/badge.svg)](https://github.com/serengil/deepface/actions/workflows/tests.yml)
 
 Pull requests are more than welcome! You should run the unit tests locally by running [`test/unit_tests.py`](https://github.com/serengil/deepface/blob/master/tests/unit_tests.py) before creating a PR. Once a PR sent, GitHub test workflow will be run automatically and unit test results will be available in [GitHub actions](https://github.com/serengil/deepface/actions) before approval. Besides, workflow will evaluate the code with pylint as well.
@@ -345,7 +341,7 @@ You can also support this work on [Patreon](https://www.patreon.com/serengil?rep
 
 Please cite deepface in your publications if it helps your research. Here are its BibTex entries:
 
-<!-- If you use deepface for facial recogntion purposes, please cite the this publication. -->
+If you use deepface for facial recogntion purposes, please cite the this publication.
 
 ```BibTeX
 @inproceedings{serengil2020lightface,
@@ -360,7 +356,7 @@ Please cite deepface in your publications if it helps your research. Here are it
 }
 ```
 
-<!-- If you use deepface for facial attribute analysis purposes such as age, gender, emotion or ethnicity prediction, please cite the this publication. -->
+ If you use deepface for facial attribute analysis purposes such as age, gender, emotion or ethnicity prediction or face detection purposes, please cite the this publication.
 
 ```BibTeX
 @inproceedings{serengil2021lightface,
@@ -375,23 +371,8 @@ Please cite deepface in your publications if it helps your research. Here are it
 }
 ```
 
-```BibTeX
-@misc{serengil2023db,
-  author       = {Serengil, Sefik Ilkin and Ozpinar, Alper},
-  title        = {An Evaluation of SQL and NoSQL Databases for Facial Recognition Pipelines},
-  year         = {2023},
-  publisher    = {Cambridge Open Engage},
-  doi          = {10.33774/coe-2023-18rcn},
-  url          = {https://doi.org/10.33774/coe-2023-18rcn},
-  howpublished = {https://www.cambridge.org/engage/coe/article-details/63f3e5541d2d184063d4f569},
-  note         = {Preprint}
-}
-```
-
 Also, if you use deepface in your GitHub projects, please add `deepface` in the `requirements.txt`.
 
 ## Licence
 
-Deepface is licensed under the MIT License - see [`LICENSE`](https://github.com/serengil/deepface/blob/master/LICENSE) for more details. However, the library wraps some external face recognition models: [VGG-Face](http://www.robots.ox.ac.uk/~vgg/software/vgg_face/), [Facenet](https://github.com/davidsandberg/facenet/blob/master/LICENSE.md), [OpenFace](https://github.com/iwantooxxoox/Keras-OpenFace/blob/master/LICENSE), [DeepFace](https://github.com/swghosh/DeepFace), [DeepID](https://github.com/Ruoyiran/DeepID/blob/master/LICENSE.md), [ArcFace](https://github.com/leondgarse/Keras_insightface/blob/master/LICENSE), [Dlib](https://github.com/davisking/dlib/blob/master/dlib/LICENSE.txt), and [SFace](https://github.com/opencv/opencv_zoo/blob/master/models/face_recognition_sface/LICENSE). Besides, age, gender and race / ethnicity models are based on VGG-Face. Licence types will be inherited if you are going to use those models. Please check the license types of those models for production purposes.
-
-Deepface [logo](https://thenounproject.com/term/face-recognition/2965879/) is created by [Adrien Coquet](https://thenounproject.com/coquet_adrien/) and it is licensed under [Creative Commons: By Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0/).
+Deepface is licensed under the MIT License - see [`LICENSE`](https://github.com/serengil/deepface/blob/master/LICENSE) for more details.
