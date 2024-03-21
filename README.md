@@ -1,6 +1,6 @@
 # deepface for macos
 
-**Note:** this is the same as the standard [deepface](https://github.com/serengil/deepface) except the tensorflow dependency is tensorflow-macos and the RetinaFace dependency is [RetinaFace for macos](https://github.com/leerix/retinaface-macos)
+**Note:** this is the same as the standard [deepface](https://github.com/serengil/deepface) except the tensorflow dependency later and includes tensorflow-metal and the RetinaFace dependency is [RetinaFace for macos](https://github.com/leerix/retinaface-macos)
 
 <div align="center">
 
@@ -138,7 +138,7 @@ embedding_objs = DeepFace.represent(img_path = "img.jpg",
 
 <p align="center"><img src="https://raw.githubusercontent.com/serengil/deepface/master/icon/model-portfolio-20240316.jpg" width="95%" height="95%"></p>
 
-FaceNet, VGG-Face, ArcFace and Dlib are [overperforming](https://youtu.be/i_MOwvhbLdI) ones based on experiments. You can find out the scores of those models below on [Labeled Faces in the Wild](https://sefiks.com/2020/08/27/labeled-faces-in-the-wild-for-face-recognition/) set declared by its creators. 
+FaceNet, VGG-Face, ArcFace and Dlib are [overperforming](https://youtu.be/i_MOwvhbLdI) ones based on experiments. You can find out the scores of those models below on [Labeled Faces in the Wild](https://sefiks.com/2020/08/27/labeled-faces-in-the-wild-for-face-recognition/) set declared by its creators.
 
 | Model          | Declared LFW Score |
 | -------------- | ------------------ |
